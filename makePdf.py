@@ -1,4 +1,4 @@
-from reportlab.lib.pagesizes import letter
+from reportlab.lib.pagesizes import LEGAL
 from reportlab.pdfgen import canvas
 
 # Define your content
@@ -145,21 +145,21 @@ Tips for cURL:
 """
 
 # Create PDF
-pdf_filename = "docker_flask_tutorial_en.pdf"
-c = canvas.Canvas(pdf_filename, pagesize=letter)
+pdf_filename = "docker_flask_tutorial_en_v2.pdf"
+c = canvas.Canvas(pdf_filename, pagesize=LEGAL)
 c.setFont("Helvetica", 10)
 
 # Add text to the PDF
-y_position = 750  # Start position
+y_position = 1000  # Start position
 for line in content_en.split("\n"):
     c.drawString(50, y_position, line)
     y_position -= 12  # Move to the next line
 
     # Check if the page is full
-    if y_position < 50:
+    if y_position < 100:
         c.showPage()  # Create a new page
         c.setFont("Helvetica", 10)
-        y_position = 750
+        y_position = 1000
 
 c.save()
 
